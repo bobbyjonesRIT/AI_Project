@@ -55,7 +55,8 @@ end
 
 while 1
     fprintf( '1) Baseline\n' );
-    fprintf( '2) Quit\n' );
+    fprintf( '2) Computer Vision\n' );
+    fprintf( '3) Quit\n' );
     fprintf( '\n' );
     sel = input( 'Select algorithm: ' );
     switch sel
@@ -66,6 +67,12 @@ while 1
             fprintf( 'Correct: %3.3f\n', 100*(baseConfMat(1,1)+baseConfMat(2,2))/sum(sum(baseConfMat)));
             fprintf( 'Wrong: %3.3f\n\n', 100*(baseConfMat(1,2)+baseConfMat(2,1))/sum(sum(baseConfMat)));
         case 2
+            [testRes, tTrain, tTest] = computerVision( trainSet, testSet );
+            baseConfMat = confusionmat( testSet(:,end), testRes);
+            disp( baseConfMat );
+            fprintf( 'Correct: %3.3f\n', 100*(baseConfMat(1,1)+baseConfMat(2,2))/sum(sum(baseConfMat)));
+            fprintf( 'Wrong: %3.3f\n\n', 100*(baseConfMat(1,2)+baseConfMat(2,1))/sum(sum(baseConfMat)));
+        case 3
             break;
     end
 end
