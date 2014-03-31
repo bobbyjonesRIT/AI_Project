@@ -67,7 +67,7 @@ while 1
             fprintf( 'Correct: %3.3f\n', 100*(baseConfMat(1,1)+baseConfMat(2,2))/sum(sum(baseConfMat)));
             fprintf( 'Wrong: %3.3f\n\n', 100*(baseConfMat(1,2)+baseConfMat(2,1))/sum(sum(baseConfMat)));
         case 2
-            [testRes, tTrain, tTest] = computerVision( trainSet, testSet );
+            [testRes, tTrain, tTest] = computerVisionAlg( trainSet, testSet );
             baseConfMat = confusionmat( testSet(:,end), testRes);
             disp( baseConfMat );
             fprintf( 'Correct: %3.3f\n', 100*(baseConfMat(1,1)+baseConfMat(2,2))/sum(sum(baseConfMat)));
